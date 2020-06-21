@@ -29,20 +29,16 @@ ROC 曲线的两个指标:
 
 AUC（Area Under Curve）被定义为ROC曲线下的面积，显然这个面积的数值不会大于1。
 The AUC value is equivalent to the probability that a randomly chosen positive example is ranked higher than a randomly chosen negative example. 翻译过来就是，随机挑选一个正样本以及一个负样本，分类器判定正样本的值高于负样本的概率就是 AUC 值。简单说：AUC值越大的分类器，正确率越高3。
-* 
-AUC=1
+* AUC=1  
 AUC=1，**完美分类器**，采用这个预测模型时，不管设定什么阈值都能得出完美预测。绝大多数预测的场合，不存在完美分类器。
-* 
-0.5<AUC<1
+* 0.5<AUC<1  
 0.5<AUC<1，**优于随机猜测**。这个分类器（模型）妥善设定阈值的话，能有预测价值。
-* 
-AUC=0.5
+* AUC=0.5  
 AUC=0.5，跟**随机猜测**一样（例：丢铜板），模型没有预测价值。
-* 
-AUC<0.5
+* AUC<0.5  
 AUC<0.5，比**随机猜测**还差；但只要总是反预测而行，就优于随机猜测，因此不存在AUC<0.5的情况。
 既然已经这么多评价标准，为什么还要使用ROC和AUC呢？因为ROC曲线有个很好的特性：当测试集中的正负样本的分布变化的时候，ROC曲线能够保持不变。在实际的数据集中经常会出现类不平衡（class imbalance）现象，即负样本比正样本多很多（或者相反）
 
-Precision-recall 曲线
+Precision-recall 曲线  
 如果你想评估一个分类器的性能，一个比较好的方法就是：观察当阈值变化时，Precision与Recall值的变化情况。如果一个分类器的性能比较好，那么它应该有如下的表现：被识别出的图片中TP所占的比重比较大，并且在识别出FP之前，尽可能多地正确识别出TP，也就是让Recall值增长的同时保持Precision的值在一个很高的水平。而性能比较差的分类器可能会损失很多Precision值才能换来Recall值的提高。通常情况下，文章中都会使用Precision-recall曲线，来显示出分类器在Precision与Recall之间的权衡。
 
